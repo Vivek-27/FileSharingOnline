@@ -20,6 +20,7 @@ const App = () => {
   const [result, setResult] = useState('');
   const [icon, setIcon] = useState(folder);
   const [btn, setBtn] = useState('');
+  const [loading, setLoading] = useState(false);
   const [text, setText] = useState('Select your file');
 
   const onUploadClick = () => {
@@ -41,6 +42,10 @@ const App = () => {
     await navigator.clipboard.writeText(result);
     alert('Copied the link: ' + result);
   };
+
+  useEffect(() => {
+    setLoading(false);
+  }, [result]);
 
   useEffect(() => {
     if (file) {
@@ -123,20 +128,39 @@ const App = () => {
               }}
             >
               <img src={icon} alt="file" />
+              {loading ? (
+                <div className="spinner-container">
+                  <div className="loading-spinner"></div>
+                </div>
+              ) : (
+                ''
+              )}
             </div>
             <sup>{text}</sup>
+
             <div className="share_container">
               {btn === 'upload' ? (
                 <>
                   <p>Click here to Share your file</p>
-                  <RxShare2 className="rx" onClick={() => upload(file)} />
+                  <RxShare2
+                    className="rx"
+                    onClick={() => {
+                      upload(file);
+                      setLoading(true);
+                    }}
+                  />
                 </>
               ) : (
                 ''
               )}
               {btn === 'share' ? (
                 <>
-                  <MdContentCopy className="rx" onClick={() => copyFn()} />
+                  <MdContentCopy
+                    className="rx"
+                    onClick={() => {
+                      copyFn();
+                    }}
+                  />
                   <a href={result} if="myInput">
                     {result}
                   </a>
