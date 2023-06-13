@@ -8,7 +8,9 @@ const uploadImage = async (req, res) => {
 
   try {
     const file = await File.create(fileObj);
-    res.status(200).json({ path: `http://localhost:8000/file/${file._id}` });
+    res
+      .status(200)
+      .json({ path: `https://fileshareonline.onrender.com/file/${file._id}` });
   } catch (error) {
     console.error(error.message);
     res.status(500).json({ error: error.message });
