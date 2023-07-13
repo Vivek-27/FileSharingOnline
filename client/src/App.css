@@ -5,8 +5,7 @@
 }
 
 .container {
-  background: linear-gradient(rgb(170, 50, 255), rgb(251, 0, 255));
-  background-image: url('https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+  background: linear-gradient(#0c0114, #4b0f4c);
   background-size: cover;
   height: 100vh;
   overflow: hidden;
